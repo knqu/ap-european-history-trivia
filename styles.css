@@ -1,0 +1,260 @@
+/* -------------------------
+
+CSS RESET
+http://meyerweb.com/eric/tools/css/reset/ 
+v2.0 | 20110126
+license: none (public domain)
+
+------------------------- */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+
+}
+
+body {
+    line-height: 1;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* -------------------------
+
+CUSTOM CSS
+
+------------------------- */
+
+:root {
+    /* colors */
+    --light1: #dfdfdf;
+    --light2: #c9c9c9;
+    --light3: #a3a2a2;
+    --dark1: #2b2b2b;
+    --dark2: #1f1f1f;
+    --dark3: #121212;
+    --secondary: #c963e6;
+    --correct: #8df18d;
+    --wrong: #f48a86;
+
+    /* font sizes */
+    --fontUltraSmall: 16px;
+    --fontSmall: 24px;
+    --fontMedium: 36px;
+    --fontLarge: 42px;
+    --fontUltraLarge: 78px;
+}
+
+::selection {
+    background-color: var(--secondary);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Didact Gothic';
+    font-kerning: none;
+    font-size: var(--fontSmall);
+    line-height: 1.15;
+    color: var(--light2);
+}
+
+/* sections */
+
+h1 {
+    font-family: 'Rubik';
+    font-size: var(--fontUltraLarge);
+    color: var(--light1);
+    font-weight: 800;
+    text-align: center;
+    padding-top: 35vh;
+}
+
+#landing {
+    height: 100vh;
+    background: linear-gradient(to bottom right, #FF0080, #40E0D0);
+}
+
+/* buttons */
+
+.btnWrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5vh;
+}
+
+button, .button {
+    font-size: var(--fontMedium);
+    font-family: 'Rubik';
+    border: 4px solid var(--light2);
+    background: none;
+    color: var(--light1);
+    font-weight: 500;
+    margin: auto;
+    padding: 10px 64px;
+    outline: none;
+}
+
+button:hover {
+    background-color: var(--light2);
+    color: var(--dark2);
+    padding: 10px 92px;
+    letter-spacing: 3px;
+    transition: all 200ms ease;
+}
+
+button:active {
+    border: 3px solid var(--dark1);
+}
+
+
+/* -------------------------
+
+PRELOADER
+
+------------------------- */
+
+#preloader {
+    width: 360px;
+    height: 120px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--light1);
+    user-select: none;
+}
+
+#preloader:before {
+    content: '';
+    background: var(--dark1);
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    animation: 2s preloaderBefore infinite ease-in-out;
+}
+
+@keyframes preloaderBefore {
+    0% {
+        transform: translateX(-20px);
+    }
+
+    50% {
+        transform: translateX(20px);
+    }
+
+    100% {
+        transform: translateX(-20px);
+    }
+}
+
+
+#preloader:after {
+    content: '';
+    background: var(--secondary);
+    width: 50px;
+    height: 160px;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    opacity: .5;
+    animation: 2s preloaderAfter infinite ease-in-out;
+}
+
+@keyframes preloaderAfter {
+    0% {
+        transform: translateX(-120px);
+    }
+
+    50% {
+        transform: translateX(120px);
+    }
+
+    100% {
+        transform: translateX(-120px);
+    }
+}
+
+#preloaderText {
+    font-family: 'Rubik';
+    font-size: var(--fontLarge);
+    font-weight: 700;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: blink 2s infinite;
+}
+
+#subPreloaderText {
+    text-align: center;
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: blink 2s infinite;
+}
+
+@keyframes blink {
+    from {
+        opacity: 1.0;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+
+    to {
+        opacity: 1.0;
+    }
+}
