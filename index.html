@@ -14,14 +14,13 @@
     <!-- google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Rubik:wght@700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+SC:wght@400;500;600;700;800" rel="stylesheet">
 
     <!-- custom css -->
     <link rel="stylesheet" href="styles.css">
 
     <!-- website -->
-    <title>European History Trivia</title>
+    <title>AP European History Trivia</title>
 
     <!-- js disabled styles -->
     <noscript>
@@ -67,9 +66,31 @@
                 <p>JavaScript must be enabled in order to play</p>
             </noscript>
 
-            <h1>EUROPEAN HISTORY TRIVIA</h1>
-            <div class="btnWrap">
-                <button id="start">START</button>
+            <div id="startScreen">
+                <h1>AP EUROPEAN HISTORY TRIVIA</h1>
+                <div class="btnWrap">
+                    <button id="startBtn">START</button>
+                </div>
+            </div>
+
+            <div id="gameScreen" style="opacity:0">
+                <div id="intro" class="scene">
+                    <p class="intro prompt">Welcome to AP European History Trivia!</p>
+                    <p class="intro prompt">You will be given 11 questions: one from each unit.</p>
+                    <p class="intro prompt">Each question will be randomly selected from a question pool for each unit.
+                    </p>
+                    <p class="intro prompt">You will have 20 seconds to answer each question.</p>
+                    <p class="intro prompt" id="startTimer">3</p>
+                </div>
+
+                <div id="q1" class="scene">
+                    <p class="q1 prompt">Welcome to AP European History Trivia!</p>
+                    <p class="q1 prompt">You will be given 11 questions: one from each unit.</p>
+                    <p class="q1 prompt">Each question will be randomly selected from a question pool for each unit.
+                    </p>
+                    <p class="q1 prompt">You will have 20 seconds to answer each question.</p>
+                    <p class="q1 prompt" id="startTimer">3</p>
+                </div>
             </div>
         </div>
     </div>
