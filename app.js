@@ -74,6 +74,8 @@ function summary() {
     });
 
     scoreVal.innerText = points;
+
+    alert(`Congragulations! Your final score is: ${points}/11`);
 }
 
 class Question {
