@@ -64,7 +64,7 @@ startBtn.addEventListener('click', function () {
         startScreen.remove();
     }, 1000);
     timeline
-        .to(introText[0], { duration: 1, opacity: 1 }, '<')
+        .to(introText[0], { duration: 2, opacity: 1 }, '<')
         .to(introText[1], { duration: 2, opacity: 1 })
         .to(introText[2], { duration: 2, opacity: 1 })
         .to(introText[3], { duration: 2, opacity: 1 })
