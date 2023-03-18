@@ -38,7 +38,7 @@ function setTimer(seconds, el, callback, previousElement) {
     timer = setInterval(function () {
         if (timeLeft <= 0) {
             clearInterval(timer);
-            if (previousElement !== intro) {
+            if (previousElement !== intro && callback < 12) {
                 responseModal.show();
                 responseModalTitle.innerHTML = "Time's up!";
                 responseModalTitle.classList.remove('success');
@@ -56,6 +56,8 @@ function setTimer(seconds, el, callback, previousElement) {
             }
         }
         timeLeft--;
+        console.log(timer);
+        console.log(seconds, el, callback, previousElement);
     }, 1000);
 }
 
