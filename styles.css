@@ -154,7 +154,7 @@ CUSTOM CSS
     --dark3: #121212;
     --secondary: #a963e6;
     --correct: #8df18d;
-    --wrong: #f48a86;
+    --incorrect: #f48a86;
 
     /* font sizes */
     --fontUltraSmall: 16px;
@@ -298,4 +298,47 @@ button:active {
 
 .option:active {
     border: 2px solid var(--dark1);
+}
+
+.success {
+    color: var(--correct);
+}
+
+.error {
+    color: var(--incorrect);
+}
+
+.modal-header {
+    justify-content: center;
+}
+
+.modal-title {
+    font-size: var(--fontMedium);
+    color: var(--success);
+    font-weight: 600;
+}
+
+.modal-body {
+    padding-top: 24px;
+    padding-bottom: 0;
+    font-size: var(--fontSmall);
+    text-align: center;
+}
+
+.modal-content {
+    background-color: var(--dark1);
+    color: var(--light1);
+}
+
+.modal-footer {
+    border-top: none;
+    margin-bottom: 8px;
+    margin-top: 12px;
+}
+
+#modalCloseButton {
+    width: 100%;
+    border: 1px solid var(--light1);
+    font-weight: 400;
+    font-size: var(--fontSmall);
 }

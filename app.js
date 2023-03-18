@@ -5,6 +5,9 @@ const startScreen = document.querySelector('#startScreen');
 // game ui selectors
 const startBtn = document.querySelector('#startBtn');
 const gameScreen = document.querySelector('#gameScreen');
+const responseModal = new bootstrap.Modal(document.querySelector('#responseModal'));
+const responseModalTitle = document.querySelector('.modal-title');
+const responseModalText = document.querySelector('.modal-body');
 
 // question (/intro) selectors
 const intro = document.querySelector('#intro');
@@ -18,8 +21,8 @@ const scenes = document.querySelectorAll('.scene');
 // score selectors
 let points = 0;
 const score = document.querySelector('#score');
+const scoreText = document.querySelectorAll('.score');
 const scoreVal = document.querySelector('#scoreVal');
-const playAgain = document.querySelector('#playAgain');
 
 // preloader & page animations
 
@@ -36,7 +39,11 @@ function setTimer(seconds, el, callback, previousElement) {
         if (timeLeft <= 0) {
             clearInterval(timer);
             if (previousElement !== intro) {
-                alert(`You have ran out of time! You still have ${points} points!`);
+                responseModal.show();
+                responseModalTitle.innerHTML = "Time's up!";
+                responseModalTitle.classList.remove('success');
+                responseModalTitle.classList.add('error');
+                responseModalText.innerHTML = `You still have ${points} points!`;
             }
             if (callback < 12) {
                 new Question(previousElement).start();
@@ -44,7 +51,9 @@ function setTimer(seconds, el, callback, previousElement) {
                 summary();
             }
         } else {
-            el.innerHTML = timeLeft;
+            if (el) {
+                el.innerHTML = timeLeft;
+            }
         }
         timeLeft--;
     }, 1000);
@@ -69,13 +78,18 @@ startBtn.addEventListener('click', function () {
 });
 
 function summary() {
-    playAgain.addEventListener('click', function () {
-        location.reload();
-    });
-
-    scoreVal.innerText = points;
-
-    alert(`Congragulations! Your final score is: ${points}/11`);
+    scoreVal.innerHTML = `${points} out of 11`;
+    const timeline = gsap.timeline();
+    timeline
+        .to(scenes[10], { duration: 1, opacity: 0 })
+        .to(score, { duration: 1, opacity: 1 });
+    setTimeout(function () {
+        scenes[10].remove();
+    }, 1000);
+    timeline
+        .to(scoreText[0], { duration: 2, opacity: 1 }, '<')
+        .to(scoreText[1], { duration: 2, opacity: 1 })
+        .to(scoreText[2], { duration: 2, opacity: 1 });
 }
 
 class Question {
@@ -102,9 +116,17 @@ class Question {
                 option.addEventListener('click', function () {
                     if (option.classList.contains('correct')) {
                         points++;
-                        alert(`Correct! You now have ${points} points.`);
+                        responseModal.show();
+                        responseModalTitle.innerHTML = "Correct!";
+                        responseModalTitle.classList.remove('error');
+                        responseModalTitle.classList.add('success');
+                        responseModalText.innerHTML = `You now have ${points} points!`;
                     } else {
-                        alert(`Incorrect! You still have ${points} points.`);
+                        responseModal.show();
+                        responseModalTitle.innerHTML = "Incorrect!";
+                        responseModalTitle.classList.remove('success');
+                        responseModalTitle.classList.add('error');
+                        responseModalText.innerHTML = `You still have ${points} points!`;
                     }
                     clearInterval(timer);
                     new Question(element).start();

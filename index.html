@@ -49,13 +49,12 @@
             #start {
                 cursor: not-allowed;
             }
+
         </style>
     </noscript>
 </head>
 
 <body>
-    <!-- main content -->
-
     <div id="landing">
         <noscript id="jsDisabled">
             <p>JavaScript must be enabled in order to play</p>
@@ -214,8 +213,24 @@
             </div>
 
             <div id="score" class="scene">
-                <p class="score prompt">Your score is: <span id="scoreVal"></span></p>
-                <p>Reload to play again!</p>
+                <p class="score prompt">Your final score is:</p>
+                <p class="score prompt" id="scoreVal">Calculating...</p>
+                <p class="score">Thanks for playing! (Reload to play again.)</p>
+            </div>
+        </div>
+
+        <!-- response modal -->
+        <div class="modal fade" id="responseModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title"></h3>
+                    </div>
+                    <p class="modal-body"></p>
+                    <div class="modal-footer">
+                        <button id="modalCloseButton" data-bs-dismiss="modal">Okay</button>
+                    </div>
+                </div>
             </div>
         </div>
 
